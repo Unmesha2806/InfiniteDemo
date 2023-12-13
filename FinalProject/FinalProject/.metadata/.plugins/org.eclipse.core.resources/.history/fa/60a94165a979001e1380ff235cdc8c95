@@ -1,0 +1,7 @@
+package com.java.jsp;
+
+public enum IsActive {
+	
+	ACTIVE,INACTIVE
+
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated Nov 3, 2023, 11:11:04 AM by Hibernate Tools 3.6.2.Final -->
+<hibernate-mapping>
+
+<class
+    name="com.java.jsp.Login"
+    table="Provider_Authentication"
+>
+
+	<id 
+        name="authId"
+        type="int"
+    >
+    
+<column name="AUTHID" />
+	    <generator class="assigned" />
+    </id>
+
+
+
+
+    <property
+        name="providerid"
+	    type="java.lang.String"
+    >
+<column name="PROVIDERID" />
+  </property>
+
+    <property
+        name="email"
+	    type="java.lang.String"
+    >
+<column name="EMAIL" />
+  </property>
+
+    <property
+        name="username"
+	    type="java.lang.String"
+    >
+<column name="USERNAME" />
+  </property>
+
+    <property
+        name="password"
+	    type="java.lang.String"
+    >
+<column name="PASSWORD" />
+  </property>
+
+    <property
+        name="status"
+	    type="java.lang.String"
+    >
+<column name="STATUS" />
+  </property>
+
+    <property
+        name="otp"
+	    type="java.lang.String"
+    >
+<column name="OTP" />
+  </property>
+
+
+</class>
+
+</hibernate-mapping>

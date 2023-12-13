@@ -1,0 +1,7 @@
+package com.java.jsp;
+
+public enum Shift {
+	
+	MORNING,EVENING,ALL
+
+}

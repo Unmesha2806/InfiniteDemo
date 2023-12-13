@@ -1,0 +1,15 @@
+package com.java.jsp;
+
+import java.util.Date;
+
+import java.util.regex.Pattern;
+
+
+public class Dummy {
+	public static void main(String[] args) {
+		String password = "^(?=(.*[A-Z]){2,3})(?=(.*[a-z]){2,3})(?=(.*\\d){2,3})(?=(.*[!$#%]){2,3})[A-Za-z\\d!$#%]{8,}$";
+		ProviderDAOImpl dao= new ProviderDAOImpl();
+		System.out.println(
+				(Pattern.matches(password,"12345678@Asd")));
+	}
+}

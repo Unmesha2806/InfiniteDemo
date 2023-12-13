@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Generated Dec 4, 2023, 5:59:18 PM by Hibernate Tools 3.6.2.Final -->
+<hibernate-mapping>
+
+	<class name="com.java.jsp.Provider" table="PROVIDER_DETAILS">
+
+		<id name="providerid" type="java.lang.String">
+
+			<column name="PROVIDERID" />
+			<generator class="assigned" />
+		</id>
+
+
+
+
+		<property name="firstName" type="java.lang.String">
+			<column name="FIRSTNAME" />
+		</property>
+
+		<property name="lastName" type="java.lang.String">
+			<column name="LASTNAME" />
+		</property>
+
+		<property name="dateOfBirth" type="java.util.Date">
+			<column name="DATEOFBIRTH" />
+		</property>
+
+		<property name="enrollmentDate" type="java.util.Date">
+			<column name="ENROLLMENTDATE" />
+		</property>
+
+		<property name="email" type="java.lang.String">
+			<column name="EMAIL" />
+		</property>
+
+		<property name="licenseNumber" type="java.lang.String">
+			<column name="LICENSENUMBER" />
+		</property>
+
+		<property name="qualification" type="java.lang.String">
+			<column name="QUALIFICATION" />
+		</property>
+
+		<property name="userName" type="java.lang.String">
+			<column name="USERNAME" />
+		</property>
+
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" />
+		</property>
+
+		<property name="status" type="java.lang.String">
+			<column name="STATUS" />
+		</property>
+
+		<property name="phoneno" type="java.lang.String">
+			<column name="PHONENO" />
+		</property>
+
+		<property name="gender" type="java.lang.String">
+			<column name="GENDER" />
+		</property>
+
+		<property name="speciality" type="java.lang.String">
+			<column name="SPECIALITY" />
+		</property>
+
+		<property name="address" type="java.lang.String">
+			<column name="ADDRESS" />
+		</property>
+
+		<property name="securityQuestion" type="java.lang.String">
+			<column name="SECURITY_QUESTION" />
+		</property>
+
+		<property name="securityAnswer" type="java.lang.String">
+			<column name="SECURITY_ANSWER" />
+		</property>
+
+		<property name="isActive" type="java.lang.String">
+			<column name="ISACTIVE" />
+		</property>
+
+		<property name="comments" type="java.lang.String">
+			<column name="COMMENTS" />
+		</property>
+
+
+	</class>
+
+</hibernate-mapping>

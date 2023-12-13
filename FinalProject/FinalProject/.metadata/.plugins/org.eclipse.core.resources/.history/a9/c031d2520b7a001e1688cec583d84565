@@ -1,0 +1,11 @@
+package com.java.jsp;
+
+import java.util.List;
+
+public interface ProviderDao {
+	
+	String addProvider(Provider provider);
+	List<Provider> getAllProviders();
+    Provider getProviderByEmail(String email);
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.apache.naming.factory.MailSessionFactory"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.AnnotationConfiguration"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="com.java.jsp.ProviderDao"/>
+    <fullyQualifiedTypeName name="com.java.jsp.ProviderDaoImpl"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="org.hibernate.tool.hbm2ddl.ConnectionHelper"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.Query"/>
+    <fullyQualifiedTypeName name="java.security.SecureRandom"/>
+    <fullyQualifiedTypeName name="org.hibernate.Query"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.Configuration"/>
+    <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+    <fullyQualifiedTypeName name="com.java.jsp.SessionHelper"/>
+    <fullyQualifiedTypeName name="org.hibernate.Criteria"/>
+    <fullyQualifiedTypeName name="org.hibernate.criterion.Order"/>
+    <fullyQualifiedTypeName name="org.hibernate.criterion.Restrictions"/>
+    <fullyQualifiedTypeName name="org.hibernate.criterion.Projections"/>
+    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+    <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
+    <fullyQualifiedTypeName name="org.hibernate.Session"/>
+    <fullyQualifiedTypeName name="com.java.jsp.Provider"/>
+    <fullyQualifiedTypeName name="com.java.jsp.ProviderDAO"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+    <fullyQualifiedTypeName name="com.java.jsp.ProviderController"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.java.jsp.ProviderDAOImpl"/>
+    <fullyQualifiedTypeName name="javax.faces.context.ExternalContext"/>
+    <fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+</qualifiedTypeNameHistroy>

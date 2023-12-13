@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee /WEB-INF/schema/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+    <!-- This file must be present with our jar, even if it is empty. Otherwise,
+        our Java annotations won't get scanned! -->
+
+    <managed-bean>
+		<managed-bean-name>pImpl</managed-bean-name>
+		<managed-bean-class>com.java.jsp.ProviderDAOImpl</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>provider</managed-bean-name>
+		<managed-bean-class>com.java.jsp.Provider</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>daoImpl</managed-bean-name>
+		<managed-bean-class>com.java.jsp.ProviderDAOImpl</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>providerController</managed-bean-name>
+		<managed-bean-class>com.java.jsp.ProviderController
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>provider</property-name>
+			<property-class>com.java.jsp.Provider</property-class>
+			<value>#{provider}</value>
+		</managed-property>
+
+		<managed-property>
+			<property-name>daoImpl</property-name>
+			<property-class>com.java.jsp.ProviderDAOImpl</property-class>
+			<value>#{daoImpl}</value>
+		</managed-property>
+	</managed-bean>
+
+</faces-config>
+    

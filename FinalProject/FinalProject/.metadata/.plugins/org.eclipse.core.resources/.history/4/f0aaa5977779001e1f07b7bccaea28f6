@@ -1,0 +1,13 @@
+package com.java.jsp;
+
+import org.apache.naming.factory.MailSessionFactory;
+import org.hibernate.SessionFactory;
+
+public class SessionHelper {
+
+	public static SessionFactory getConnection() {
+		return new AnnotationConfiguration().configure().buildSessionFactory();
+		
+	}
+	
+}

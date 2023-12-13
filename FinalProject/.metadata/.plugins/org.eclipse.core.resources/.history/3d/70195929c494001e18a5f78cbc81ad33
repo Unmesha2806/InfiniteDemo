@@ -1,0 +1,209 @@
+package com.java.jsp;
+
+import java.security.SecureRandom;
+import javax.faces.application.FacesMessage;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.faces.context.FacesContext;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+
+
+
+
+
+
+public class ProviderDAOImpl implements ProviderDAO{
+	
+	SessionFactory sf;
+	Session session;
+	
+	
+//	public String addProviderDao(Provider provider) {
+//		sf = SessionHelper.getConnection();
+//		session = sf.openSession();
+//		Transaction trans = session.beginTransaction();
+//		session.save(provider);
+//		trans.commit();
+//		return "Record Inserted";
+//		return "UpdateAgent.jsp?faces-redirect=true";
+	
+	
+	 @Override
+	    public String addProviderDao(Provider provider) {
+		 FacesContext context = FacesContext.getCurrentInstance();
+		 System.out.println("Provider Id i 40789 " +provider.getFirstName());
+	     String providerid = generateProviderID();
+	     System.out.println("Provider Id i 40 " +providerid);
+	     
+	     String Address= provider.getAddress()+" "+ provider.getCountry() +" "+ provider.getCity()+ " Pincode: "+ provider.getPostalCode()+" "+ provider.getState();
+	     provider.setAddress(Address);	
+	    	
+	    	SimpleDateFormat sdf = new SimpleDateFormat();
+	    	Date date = new Date();
+	    	String dateStr = sdf.format(date);
+	    	java.util.Date search;
+	    	try {
+				search = sdf.parse(dateStr);
+				java.sql.Date sqlDate = new java.sql.Date(search.getTime());
+				provider.setEnrollmentDate(sqlDate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	    	// Check if the username already exists
+	    	
+	        if (isUsernameExists(provider.getUserName())) {
+	            // Display a FacesMessage for the username existence
+	            FacesMessage message = new FacesMessage("Username already exists. Please choose a different username.");
+	            context.addMessage("form:userName", message);
+	            return null; // Return null or handle the situation as per your requirement
+	        }
+	        
+	    	provider.setProviderid(providerid);
+	        sf = SessionHelper.getConnection();
+	        session = sf.openSession();
+	        Transaction trans = session.beginTransaction();
+	        
+//	        String pass2=EncryptPassword.getCode(provider.getPassword());
+//	        provider.setPassword(pass2);
+
+	        
+	        // Set the status to "Applied" by default
+	        provider.setStatus("Applied");
+	       
+
+	        // Save the Provider entity
+	        session.save(provider);
+	        trans.commit();
+	        session.close();
+
+	        String otp = generateOtp(8); 
+
+	        String body = "Welcome to Mr/Miss " + provider.getFirstName() + "\r\n" + "Your OTP Generated Successfully"
+	                + "\r\n" + "OTP is " + otp;
+
+
+	        MailSend.mailOtp(provider.getEmail(), "Otp Sent Successfully...", body); 
+	       
+	       
+	        session = sf.openSession();
+	        Transaction trans2 = session.beginTransaction();
+
+	        Login login = new Login();
+	        login.setProviderid(provider.getProviderid()); 
+	        login.setUsername(provider.getUserName());
+	        login.setOtp(otp);
+	        login.setEmail(provider.getEmail());
+	        String pass=EncryptPassword.getCode(provider.getPassword());
+        
+	        
+	        login.setPasscode(pass);
+
+	        session.save(login);
+
+	        trans2.commit();
+	        session.close();
+
+	        return "Welcome.jsp?faces-redirect=true";
+			}
+	    
+
+//	    public static String generateOtp(int length) {
+//	        String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+//	        SecureRandom secureRandom = new SecureRandom();
+//	        StringBuilder otp = new StringBuilder(length);
+	//
+//	        for (int i = 0; i < length; i++) {
+//	            int randomIndex = secureRandom.nextInt(characters.length());
+//	            char randomChar = characters.charAt(randomIndex);
+//	            otp.append(randomChar);
+//	        }
+	//
+//	        return otp.toString();
+//	    }
+	    public String generateOtp(int length) {
+	        String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	        SecureRandom secureRandom = new SecureRandom();
+	        StringBuilder otp = new StringBuilder(6);
+
+	        for (int i = 0; i < 6; i++) {
+	            int randomIndex = secureRandom.nextInt(characters.length());
+	            char randomChar = characters.charAt(randomIndex);
+	            otp.append(randomChar);
+	        }
+
+	        return otp.toString();
+	    }
+
+	    public static String generateProviderID() {
+	        SessionFactory sf;
+	        Session session;
+	        sf = SessionHelper.getConnection();
+	        session = sf.openSession();
+	        Transaction trans = session.beginTransaction();
+
+	        // Fetch the last ProviderID from the table
+	        Query query = session.createQuery("SELECT MAX(p.providerid) FROM Provider p");
+	        String lastProviderID = (String) query.uniqueResult();
+	        System.out.println("lastProviderID"+lastProviderID);
+
+	        if (lastProviderID == null) {
+	            lastProviderID = "PROV000"; // Set an initial value if the table is empty
+	        }
+	        System.out.println("lastProviderID134"+lastProviderID);
+
+	        // Extract the numeric part and increment it
+	        int numericPart = Integer.parseInt(lastProviderID.substring(4));
+	        numericPart++;
+
+	        // Generate the new ProviderID with the incremented numeric part
+	        String newProviderID = String.format("PROV%03d", numericPart);
+	        System.out.println(newProviderID);
+
+	        trans.commit();
+	        session.close();
+
+	        return newProviderID;
+	  
+
+	    }
+	    
+
+	 // Method to check if the username already exists in the database
+		private boolean isUsernameExists(String username) {
+		    sf = SessionHelper.getConnection();
+		    session = sf.openSession();
+		    Transaction trans = session.beginTransaction();
+	 
+		    Query query = session.createQuery("SELECT COUNT(l.username) FROM Login l WHERE l.username = :username");
+		                                            //the HQL query is checking the number of records in the Login entity
+		                                                       //where the username matches the provided value (:username).
+		    query.setParameter("username", username);
+		    Long count = (Long) query.uniqueResult();
+	 
+		    trans.commit();
+		    session.close();
+	 
+		    return count > 0;
+		}
+	 
+	}
+	 
+	    
+	    
+
+	
+	
+		
+		
+		
+		
+		
+		
+	

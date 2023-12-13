@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<f:view>
+
+<html>
+   <head>
+ <meta charset="ISO-8859-1">
+ <title>JSP Page</title>
+</head>
+
+<body>
+   <h:form>
+       <h2>Add Provider</h2>
+       <hr/>
+       
+  <%--   <label>providerId</label> 
+     <h:inputText id="providerid" value="#{provider.providerid}"/><br/><br/> --%>
+        <label>First Name</label>
+        <h:inputText id="firstName"  value="#{provider.firstName}"/><br/><br/>
+        
+        <label>Last Name</label>
+        <h:inputText id="lastName"  value="#{provider.lastName}"/><br/><br/>
+        
+        <label>Date of Birth</label>
+        <h:inputText id="dateOfBirth" value="#{provider.dateOfBirth}">
+            <f:convertDateTime pattern="yyyy-MM-dd" />
+         </h:inputText><br/><br/>
+         
+       <label>Email</label>
+       <h:inputText id="email" value="#{provider.email}"/><br/><br/> 
+       
+       <label>License Number</label>
+       <h:inputText id="licenseNumber" value="#{provider.licenseNumber}"/><br/><br/> 
+       
+       <label>Qualification</label>
+       <h:inputText id="qualification" value="#{provider.qualification}"/><br/><br/> 
+       
+        <label>User Name</label>
+       <h:inputText id="userName" value="#{provider.userName}"/><br/><br/> 
+       
+       <label>Status</label>
+       <h:inputText id="status" value="#{provider.status}"/><br/><br/> 
+       
+       <label>Phone Number</label>
+       <h:inputText id="phoneno" value="#{provider.phoneno}"/><br/><br/> 
+       
+       
+       <label>Gender:</label>
+            <h:selectOneMenu id="gender" value="#{provider.gender}">
+                <f:selectItem itemLabel="Select Gender" itemValue="" />
+                <f:selectItem itemLabel="MALE" itemValue="MALE" />
+                <f:selectItem itemLabel="FEMALE" itemValue="FEMALE" />
+            </h:selectOneMenu>
+            
+        <label>Speciality</label>
+       <h:inputText id="speciality" value="#{provider.speciality}"/><br/><br/>
+       
+       <label>Address</label>
+       <h:inputText id="address" value="#{provider.address}"/><br/><br/>
+       
+       
+       <label>Is Active</label>
+       <h:inputText id="isActive" value="#{provider.isActive}"/><br/><br/>
+       <h:commandButton value="Add Provider" action="#{pBeanImpl.addProvider(provider)}"/>
+       
+       
+       
+       
+   </h:form>
+
+</body>
+</html>
+</f:view>
